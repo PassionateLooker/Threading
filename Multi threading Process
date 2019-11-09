@@ -1,0 +1,20 @@
+from threading import *
+class AvailableSeats():
+    def __init__(self,seat):
+        self.seat=seat
+
+    def buy(self,bookSeat):
+        print('Available seats are: ',self.seat)
+        if (self.seat>=bookSeat):
+            print('booking confirmed')
+            self.seat-=bookSeat
+        else:
+            print('No seat')
+
+obj=AvailableSeats(10)
+t1=Thread(target=obj.buy,args=(2,))
+t2=Thread(target=obj.buy,args=(5,))
+t3=Thread(target=obj.buy,args=(10,))
+t1.start()
+t2.start()
+t3.start()
